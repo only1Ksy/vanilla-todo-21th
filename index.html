@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Kim Seoyeon's Page</title>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="todo-container">
+      <h1 class="titles">To-do List</h1>
+      <div id="inputField">
+        <input
+          type="text"
+          id="todoInput"
+          placeholder="오늘의 할 일 입력"
+          onkeydown="keyCodeCheck();"
+        />
+        <button type="button" id="addButton" onclick="makeTodoList();">
+          +
+        </button>
+      </div>
+      <h3 class="titles">미완료 할 일</h3>
+      <ul id="todoList"></ul>
+      <h3 class="titles">완료된 할 일</h3>
+      <ul id="completedList"></ul>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
