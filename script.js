@@ -74,3 +74,31 @@ function updateTodoList(liElement, isChecked) {
     todoList.appendChild(liElement);
   }
 }
+
+// localStorage 저장 함수
+function saveTodos() {
+  const todos = [];
+
+  document.querySelectorAll("#todoList li, #completedList li").forEach((li) => {
+    const text = li.querySelector("span").textContent;
+    const isChecked = li.querySelector('input[type="checkbox"]').checked;
+    todos.push({ text, isChecked });
+  });
+
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+// localStorage에서 데이터 불러오기
+function loadTodos() {
+  const todoList = document.querySelector("#todoList");
+  const completedList = document.querySelector("#completedList");
+
+  todoList.innerHTML = "";
+  completedList.innerHTML = "";
+
+  const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  savedTodos.forEach((todo) => {
+    const newLi = createTodoElement(todo.text, todo.isChecked);
+    updateTodoList(newLi, todo.isChecked);
+  });
+}
