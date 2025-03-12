@@ -1,5 +1,8 @@
 // HTML이 로드되면 할 일 불러오기
-document.addEventListener("DOMContentLoaded", loadTodos);
+document.addEventListener("DOMContentLoaded", () => {
+  loadTodos();
+  loadTodayInfo();
+});
 
 // Enter 키 입력 감지
 function keyCodeCheck(event) {
@@ -105,4 +108,20 @@ function loadTodos() {
     const newLi = createTodoElement(todo.text, todo.isChecked);
     updateTodoList(newLi, todo.isChecked);
   });
+}
+
+// 오늘의 날짜 업데이트 함수
+function loadTodayInfo() {
+  const todayInfo = document.querySelector("#todayInfo");
+
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = today.getMonth();
+  var date = today.getDate();
+  var day = today.getDay();
+
+  var days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  todayInfo.innerHTML =
+    year + "년 " + (month + 1) + "월 " + date + "일 (" + days[day] + ")";
 }
