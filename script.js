@@ -1,18 +1,5 @@
 // HTML이 로드되면 할 일 불러오기
-document.addEventListener("DOMContentLoaded", () => {
-  printMonth();
-
-  // 이전 달, 다음 달 버튼 이벤트 추가
-  document
-    .getElementById("cal-prevButton")
-    .addEventListener("click", prevMonth);
-  document
-    .getElementById("cal-nextButton")
-    .addEventListener("click", nextMonth);
-  document
-    .querySelector(".calendar-button")
-    .addEventListener("click", loadTodos);
-});
+document.addEventListener("DOMContentLoaded", loadTodos);
 
 // Enter 키 입력 감지
 function keyCodeCheck(event) {
@@ -53,7 +40,11 @@ function createTodoElement(text, isChecked) {
 
   // 체크박스 이벤트
   checkbox.addEventListener("change", function () {
-    newSpan.style.textDecoration = this.checked ? "line-through" : "none";
+    if (this.checked) {
+      newSpan.classList.add("checkedTodos");
+    } else {
+      newSpan.classList.remove("checkedTodos");
+    }
     updateTodoList(newLi, this.checked);
     saveTodos();
   });
@@ -61,7 +52,7 @@ function createTodoElement(text, isChecked) {
   // 할 일 내용
   const newSpan = document.createElement("span");
   newSpan.textContent = text;
-  if (isChecked) newSpan.style.textDecoration = "line-through";
+  if (isChecked) newSpan.classList.add("checkedTodos");
 
   // 삭제 버튼
   const deleteButton = document.createElement("button");

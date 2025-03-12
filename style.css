@@ -59,6 +59,10 @@ ul {
   font-size: large;
   text-align: center;
 }
+.checkedTodos {
+  text-decoration: line-through;
+  color: grey;
+}
 #addButton,
 .delete-button {
   background-color: #4caf50;
