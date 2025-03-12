@@ -64,13 +64,23 @@ function createTodoElement(text, isChecked) {
   deleteButton.addEventListener("click", function () {
     newLi.remove();
     saveTodos();
+    updateStatus();
   });
 
   newLi.append(checkbox, newSpan, deleteButton);
   return newLi;
 }
 
-// 완료된 할 일과 해야 할 일 분리해서 추가
+// 개수 업데이트
+function updateStatus() {
+  const todoList = document.querySelector("#todoList");
+  const completedList = document.querySelector("#completedList");
+  const currentStatus = document.querySelector("#currentStatus");
+
+  currentStatus.innerHTML = `❎ ${todoList.childElementCount} ✅ ${completedList.childElementCount}`;
+}
+
+// 완료된 할 일과 해야 할 일 분리
 function updateTodoList(liElement, isChecked) {
   const todoList = document.querySelector("#todoList");
   const completedList = document.querySelector("#completedList");
@@ -80,6 +90,8 @@ function updateTodoList(liElement, isChecked) {
   } else {
     todoList.appendChild(liElement);
   }
+
+  updateStatus();
 }
 
 // localStorage 저장 함수
@@ -110,7 +122,7 @@ function loadTodos() {
   });
 }
 
-// 오늘의 날짜 업데이트 함수
+// 오늘의 날짜 업데이트
 function loadTodayInfo() {
   const todayInfo = document.querySelector("#todayInfo");
 

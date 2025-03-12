@@ -18,7 +18,7 @@ h1 {
   margin-bottom: 0;
 }
 h3 {
-  margin-top: 60px;
+  margin-top: 30px;
 }
 .titles {
   color: green;
@@ -30,16 +30,19 @@ ul {
   display: inline-block;
   text-align: left;
 }
-/* 헤더 칸 스타일 */
-.todo-header {
-  background-color: #d7f0d4;
-}
 /* 완료/미완료 할 일 스타일 */
 #todoList,
 #completedList {
   list-style-type: none;
   margin: 20px 0;
-  padding: 0;
+  border-radius: 8px;
+  padding: 15px;
+  width: 400px;
+  min-height: 200px; /* 최소 높이 */
+  max-height: 300px; /* 최대 높이 */
+  overflow-y: auto; /* 내용이 넘치면 스크롤 */
+  background-color: #e6f2e4;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
 }
 #todoList li,
 #completedList li {
@@ -53,11 +56,16 @@ ul {
   gap: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+/* 개수 세는 칸 스타일 */
+#currentStatus {
+  padding-top: 20px;
+}
 /* text input 칸 스타일 */
 #todoInput {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 500px;
+  border-radius: 8px;
   outline: none;
   font-family: "Jua", sans-serif;
   font-size: large;
@@ -75,7 +83,7 @@ ul {
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 8px 16px;
+  padding: 11px 16px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -125,7 +133,7 @@ input[type="checkbox"]:checked::after {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   #grid {
     display: block;
   }
@@ -134,4 +142,15 @@ input[type="checkbox"]:checked::after {
 #todayInfo {
   padding-bottom: 20px;
   margin-bottom: 20px;
+}
+/* 미완료/완료 필드 스타일 */
+.todo-field {
+  width: 500px; /* 너비 제한 */
+  margin: auto; /* 가운데 정렬 */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f0f5ed; /* 연한 노란색 배경 */
+  border-radius: 10px; /* 둥근 모서리 */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
