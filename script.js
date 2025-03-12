@@ -1,5 +1,18 @@
 // HTML이 로드되면 할 일 불러오기
-document.addEventListener("DOMContentLoaded", loadTodos);
+document.addEventListener("DOMContentLoaded", () => {
+  printMonth();
+
+  // 이전 달, 다음 달 버튼 이벤트 추가
+  document
+    .getElementById("cal-prevButton")
+    .addEventListener("click", prevMonth);
+  document
+    .getElementById("cal-nextButton")
+    .addEventListener("click", nextMonth);
+  document
+    .querySelector(".calendar-button")
+    .addEventListener("click", loadTodos);
+});
 
 // Enter 키 입력 감지
 function keyCodeCheck(event) {
@@ -63,7 +76,7 @@ function createTodoElement(text, isChecked) {
   return newLi;
 }
 
-// 완료된 할 일과 해야 할 일 분리
+// 완료된 할 일과 해야 할 일 분리해서 추가
 function updateTodoList(liElement, isChecked) {
   const todoList = document.querySelector("#todoList");
   const completedList = document.querySelector("#completedList");

@@ -18,8 +18,11 @@
   </head>
 
   <body>
-    <div class="todo-container">
+    <div class="todo-header">
       <h1 class="titles">To-do List</h1>
+      <div id="todayIndo"></div>
+    </div>
+    <div class="todo-container">
       <div id="inputField">
         <input
           type="text"
@@ -31,12 +34,17 @@
           +
         </button>
       </div>
-      <h3 class="titles">미완료 할 일</h3>
-      <ul id="todoList"></ul>
-      <h3 class="titles">완료된 할 일</h3>
-      <ul id="completedList"></ul>
+      <div id="grid">
+        <div class="todo-field">
+          <h3 class="titles">미완료 할 일</h3>
+          <ul id="todoList"></ul>
+        </div>
+        <div class="todo-field">
+          <h3 class="titles">완료된 할 일</h3>
+          <ul id="completedList"></ul>
+        </div>
+      </div>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>
