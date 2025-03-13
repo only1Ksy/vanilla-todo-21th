@@ -14,7 +14,7 @@ function keyCodeCheck(event) {
   }
 }
 
-// 새로운 할 일 생성 함수
+// 새로운 할 일 생성 함수 / 저장 데이터 불러오는 용 인자
 function makeTodoList(text = "", isChecked = false) {
   const todoInput = document.querySelector("#todoInput");
   const inputValue = text || todoInput.value.trim();
@@ -55,6 +55,8 @@ function createTodoElement(text, isChecked) {
   // 할 일 내용
   const newSpan = document.createElement("span");
   newSpan.textContent = text;
+
+  // 저장된 데이터 체크박스 활성화
   if (isChecked) newSpan.classList.add("checkedTodos");
 
   // 삭제 버튼
@@ -71,7 +73,7 @@ function createTodoElement(text, isChecked) {
   return newLi;
 }
 
-// 개수 업데이트
+// 미완료/완료 할 일 개수 업데이트
 function updateStatus() {
   const todoList = document.querySelector("#todoList");
   const completedList = document.querySelector("#completedList");
@@ -80,7 +82,7 @@ function updateStatus() {
   currentStatus.innerHTML = `❎ ${todoList.childElementCount} ✅ ${completedList.childElementCount}`;
 }
 
-// 완료된 할 일과 해야 할 일 분리
+// 미완료/완료 할 일 분리
 function updateTodoList(liElement, isChecked) {
   const todoList = document.querySelector("#todoList");
   const completedList = document.querySelector("#completedList");
